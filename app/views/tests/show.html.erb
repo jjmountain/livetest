@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+<div class="text-xl">
+  <%= @test.name %>
+</div>
+<button class="btn btn-blue float-right">Start Quiz</button>
+<div class="mt-4">
+ Questions
+</div>
+<div class="mt-6">
+ <%= render @questions %>
+</div>

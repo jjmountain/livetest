@@ -1,6 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.active_record.default_timezone :local
+
   config.session_store :cache_store
 
   # In the development environment your application's code is reloaded on
