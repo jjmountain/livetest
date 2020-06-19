@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rqrcode'
 gem 'cloudinary', '~> 1.12.0'
+gem 'omniauth-google-oauth2'
 
 
 group :development, :test do

@@ -3,10 +3,13 @@
 # Table name: users
 #
 #  id                     :uuid             not null, primary key
+#  avatar                 :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  family_name            :string
 #  given_name             :string
+#  google_refresh_token   :string
+#  google_token           :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
