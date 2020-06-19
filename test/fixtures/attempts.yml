@@ -2,14 +2,14 @@
 #
 # Table name: attempts
 #
-#  id         :bigint           not null, primary key
+#  id         :uuid             not null, primary key
 #  answers    :hstore
 #  end_time   :datetime
 #  start_time :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  student_id :bigint           not null
-#  test_id    :bigint           not null
+#  student_id :uuid             not null
+#  test_id    :uuid             not null
 #
 # Indexes
 #

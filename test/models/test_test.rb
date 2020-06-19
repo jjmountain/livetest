@@ -2,15 +2,16 @@
 #
 # Table name: tests
 #
-#  id         :bigint           not null, primary key
+#  id         :uuid             not null, primary key
 #  end_time   :datetime
 #  entry_code :string
 #  name       :string
+#  qr         :string
 #  qr_code    :string
 #  start_time :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  course_id  :bigint           not null
+#  course_id  :uuid             not null
 #
 # Indexes
 #

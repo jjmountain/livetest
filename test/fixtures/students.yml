@@ -2,12 +2,12 @@
 #
 # Table name: students
 #
-#  id         :bigint           not null, primary key
+#  id         :uuid             not null, primary key
 #  email      :string
 #  number     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  course_id  :bigint           not null
+#  course_id  :uuid             not null
 #
 # Indexes
 #

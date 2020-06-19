@@ -2,7 +2,7 @@
 <div class="text-xl">
   <%= @test.name %>
 </div>
-<button class="btn btn-blue float-right" data-reflex="click->QuizReflex#generate_qr">Generate QR Code</button>
+<button class="modal-open btn btn-blue float-right">Qr Code</button>
 <div class="mt-4">
  Questions
 </div>
@@ -10,9 +10,8 @@
  <%= render partial: 'tests/question', collection: @questions %>
 </div>
 
-<button class="modal-open bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">Open Modal</button>
   
- <%= render partial: 'shared/modal', locals: { qr_code: @code }  %>
+ <%= render partial: 'shared/modal', locals: { test: @test }  %>
 
 
 <%= javascript_pack_tag 'modal', 'data-turbolinks-track': 'reload' %>

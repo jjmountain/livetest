@@ -2,12 +2,12 @@
 #
 # Table name: questions
 #
-#  id         :bigint           not null, primary key
+#  id         :uuid             not null, primary key
 #  content    :string
 #  media      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  test_id    :bigint           not null
+#  test_id    :uuid             not null
 #
 # Indexes
 #

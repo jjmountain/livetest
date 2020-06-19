@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_045439) do
+ActiveRecord::Schema.define(version: 2020_06_19_035527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -37,9 +38,9 @@ ActiveRecord::Schema.define(version: 2020_06_18_045439) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "attempts", force: :cascade do |t|
-    t.bigint "test_id", null: false
-    t.bigint "student_id", null: false
+  create_table "attempts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "test_id", null: false
+    t.uuid "student_id", null: false
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "created_at", precision: 6, null: false
@@ -50,17 +51,17 @@ ActiveRecord::Schema.define(version: 2020_06_18_045439) do
     t.index ["test_id"], name: "index_attempts_on_test_id"
   end
 
-  create_table "choices", force: :cascade do |t|
+  create_table "choices", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "content"
-    t.bigint "question_id", null: false
+    t.uuid "question_id", null: false
     t.boolean "correct", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_choices_on_question_id"
   end
 
-  create_table "courses", force: :cascade do |t|
-    t.bigint "user_id", null: false
+  create_table "courses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
     t.string "name"
     t.string "school"
     t.datetime "created_at", precision: 6, null: false
@@ -68,8 +69,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_045439) do
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.bigint "test_id", null: false
+  create_table "questions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "test_id", null: false
     t.string "content"
     t.string "media"
     t.datetime "created_at", precision: 6, null: false
@@ -77,8 +78,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_045439) do
     t.index ["test_id"], name: "index_questions_on_test_id"
   end
 
-  create_table "students", force: :cascade do |t|
-    t.bigint "course_id", null: false
+  create_table "students", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "course_id", null: false
     t.string "email"
     t.string "number"
     t.datetime "created_at", precision: 6, null: false
@@ -86,19 +87,20 @@ ActiveRecord::Schema.define(version: 2020_06_18_045439) do
     t.index ["course_id"], name: "index_students_on_course_id"
   end
 
-  create_table "tests", force: :cascade do |t|
+  create_table "tests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.bigint "course_id", null: false
+    t.uuid "course_id", null: false
     t.string "qr_code"
     t.string "entry_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "qr"
     t.index ["course_id"], name: "index_tests_on_course_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -116,7 +118,6 @@ ActiveRecord::Schema.define(version: 2020_06_18_045439) do
   add_foreign_key "attempts", "students"
   add_foreign_key "attempts", "tests"
   add_foreign_key "choices", "questions"
-  add_foreign_key "courses", "users"
   add_foreign_key "questions", "tests"
   add_foreign_key "students", "courses"
   add_foreign_key "tests", "courses"

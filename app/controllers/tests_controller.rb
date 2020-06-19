@@ -1,3 +1,4 @@
+
 class TestsController < ApplicationController
   before_action :set_test, only: [:show, :edit, :update, :destroy]
 
@@ -10,8 +11,8 @@ class TestsController < ApplicationController
   # GET /tests/1
   # GET /tests/1.json
   def show
+    qr = RQRCode::QRCode.new("#{test_url}?code=#{@test.id}")
     @questions = Question.includes(:choices).where(test: @test)
-
   end
 
   # GET /tests/new
