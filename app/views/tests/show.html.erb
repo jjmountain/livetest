@@ -2,10 +2,10 @@
 <div class="text-xl">
   <%= @test.name %>
 </div>
-<button class="btn btn-blue float-right">Start Quiz</button>
+<button class="btn btn-blue float-right" data-reflex="click->QuizReflex#start">Start Quiz</button>
 <div class="mt-4">
  Questions
 </div>
-<div class="mt-6">
- <%= render @questions %>
+<div id="questions" class="mt-6 bg-blue-100">
+ <%#= render partial: 'tests/question', collection: @questions %>
 </div>

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ExampleReflex < ApplicationReflex
+class QuizReflex < ApplicationReflex
   # Add Reflex methods in this file.
   #
   # All Reflex instances expose the following properties:
@@ -14,7 +14,9 @@ class ExampleReflex < ApplicationReflex
   #   - params - parameters from the element's closest form (if any)
   #
   # Example:
-  #
+  def start
+    byebug
+  end
   #   def example(argument=true)
   #     # Your logic here...
   #     # Any declared instance variables will be made available to the Rails controller and view.

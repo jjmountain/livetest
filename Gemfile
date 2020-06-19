@@ -60,3 +60,5 @@ gem "devise", "~> 4.7"
 group :development do
   gem 'annotate'
 end
+
+gem "simple_form", "~> 5.0"

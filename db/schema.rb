@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_032838) do
+ActiveRecord::Schema.define(version: 2020_06_18_045439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_06_18_032838) do
   create_table "choices", force: :cascade do |t|
     t.string "content"
     t.bigint "question_id", null: false
-    t.boolean "correct"
+    t.boolean "correct", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_choices_on_question_id"

@@ -4,7 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  content     :string
-#  correct     :boolean
+#  correct     :boolean          default(FALSE)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  question_id :bigint           not null
