@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'rqrcode'
 
 class QuizReflex < ApplicationReflex
   # Add Reflex methods in this file.
@@ -14,8 +15,9 @@ class QuizReflex < ApplicationReflex
   #   - params - parameters from the element's closest form (if any)
   #
   # Example:
-  def start
-    byebug
+  def generate_qr
+    @code = SecureRandom.hex(5)
+    
   end
   #   def example(argument=true)
   #     # Your logic here...
